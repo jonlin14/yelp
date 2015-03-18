@@ -44,6 +44,24 @@
             $this->assertEquals($cuisine1, $results[0]);
 
         }
+
+        function test_search()
+        {
+            $id = 1;
+
+            $type1 = 'mexican';
+            $cuisine1 = new Cuisine($type1, $id);
+            $cuisine1->save();
+
+            $type2 = 'italian';
+            $cuisine2 = new Cuisine($type2, $id = 2);
+            $cuisine2->save();
+
+            $result = Cuisine::search($cuisine1->getId());
+
+            $this->assertEquals($cuisine1, $result);
+
+        }
     }
 
 
