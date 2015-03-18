@@ -4,22 +4,27 @@
     </head>
     <body>
         <h1>INDEX.HTML.TWIG</h1>
+        <h3>Restaurants!</h3>
+        <ul>
         {% for restaurant in restaurants %}
-        <p> {{ restaurant.getName() }}</p>
+        <li> {{ restaurant.getName() }}</li>
         {% endfor %}
+        </ul>
 
+        <h3>Cuisines!</h3>
+        <ul>
         {% for cuisine in cuisines %}
-        <p> {{ cuisine.getType() }} </p>
+        <li> {{ cuisine.getType() }} </li>
         {% endfor %}
+        </ul>
 
-
-        <form action = "/restaurant" method = "post">
+        <form action = "/" method = "post">
             <label for = "name">Enter a new restaurant</label>
             <input id = "name" name = "name" type = "text">
             <button type = "submit">Go!</button>
         </form>
 
-        <form action = "/cuisine" method = "post">
+        <form action = "/" method = "post">
             <label for = "cuisine_type">Enter a new cuisine</label>
             <input id = "cuisine_type" name = "cuisine_type" type = "text">
             <button type = "submit">Cuisine</button>
