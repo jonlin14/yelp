@@ -58,5 +58,20 @@
              }
                 return $new_array;
         }
+
+        static function find($search_id)
+        {
+            $found_restaurant = null;
+            $returned_array = Restaurant::getAll();
+            foreach ($returned_array as $element)
+            {
+                $id = $element->getId();
+                if ($id == $search_id)
+                {
+                    $found_restaurant = $element->getName();
+                }
+            }
+            return $found_restaurant;
+        }
     }
 ?>

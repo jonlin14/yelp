@@ -60,5 +60,23 @@
 
                 $this->assertEquals([$new_name_test, $new_name_test1], $result);
             }
+
+
+            function test_find()
+            {
+                $id = null;
+                $name = "Burger King";
+                $new_name_test = new Restaurant($name, $id);
+                $new_name_test->save();
+
+                $name1 = "McDonalds";
+                $new_name_test1 = new Restaurant($name1, $id);
+                $new_name_test1->save();
+
+                $result = Restaurant::find($new_name_test1->getId());
+
+                $this->assertEquals($name1, $result);
+
+            }
         }
 ?>
