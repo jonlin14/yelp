@@ -38,9 +38,27 @@
 
                 //Act
                 $result= $new_name_test->deleteAll();
+                //Restaurant::deleteAll();
 
                 //Assert
+                //$result = Restaurant::getAll();
+
+                //$this->assertEquals([], $result);
                 $this->assertEquals(null, $result);
+            }
+
+            function test_getAll()
+            {
+                $id = null;
+                $name = "Burger King";
+                $new_name_test = new Restaurant($name, $id);
+                $new_name_test->save();
+                $name1 = "McDonalds";
+                $new_name_test1 = new Restaurant($name1, $id);
+                $new_name_test1->save();
+                $result = Restaurant::getAll();
+
+                $this->assertEquals([$new_name_test, $new_name_test1], $result);
             }
         }
 ?>

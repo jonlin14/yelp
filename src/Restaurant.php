@@ -44,5 +44,19 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM restaurants *;");
         }
+
+        static function getAll()
+        {
+             $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants;");
+             $new_array = array();
+             foreach ($returned_restaurants as $element)
+             {
+                 $name = $element['name'];
+                 $id = $element['id'];
+                 $new_restaurant = new Restaurant($name, $id);
+                 array_push($new_array, $new_restaurant);
+             }
+                return $new_array;
+        }
     }
 ?>
