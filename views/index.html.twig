@@ -4,11 +4,20 @@
     </head>
     <body>
         <h1>INDEX.HTML.TWIG</h1>
+        {% for restaurant in restaurants %}
+        <p>
+            {{ restaurant.getName() }}
+        </p>
+        {% endfor %}
 
         <form action = "/restaurant" method = "post">
             <label for = "name">Enter a new restaurant</label>
             <input id = "name" name = "name" type = "text">
             <button type = "submit">Go!</button>
+        </form>
+
+        <form action = "/" method = "post">
+            <button type = "submit">Delete</button>
         </form>
 
 
