@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>RESTAURANT.HTML.TWIG</title>
+    </head>
+    <body>
+            RESTAURANT.HTML.TWIG
+
+            {% for restaurant in restaurants %}
+            <p>
+                {{ restaurant.getName() }}
+            </p>
+            {% endfor %}
+
+            <a href="/">Home Page</a>
+    </body>
+</html>
