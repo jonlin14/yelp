@@ -17,16 +17,22 @@
         });
 
         $app->post("/", function() use ($app){
-            if ($_POST['name'] = null )
-            {
+
+            if ($_POST['name']) {
             $new_restaurant = new Restaurant($_POST['name']);
             $new_restaurant->save();
+            }
             $restaurants = Restaurant::getAll();
-            return $app['twig']->render('index.html.twig', array('restaurants' => $restaurants);
+
+
+
+            if ($_POST['cuisine_type']) {
             $new_cuisine = new Cuisine($_POST['cuisine_type']);
             $new_cuisine->save();
+        }
             $cuisines = Cuisine::getAll();
             return $app['twig']->render('index.html.twig', array('restaurants' => $restaurants, 'cuisines' => $cuisines));
+
         });
 
 
