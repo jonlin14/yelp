@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>CUISINE.HTML.TWIG</title>
+    </head>
+    <body>
+            <p>CUISINE.HTML.TWIG</p>
+            {% for cuisine in cuisines %}
+            <p> {{ cuisine.getType() }} </p>
+            {% endfor %}
+
+            <a href="/">Go home!</a>
+    </body>
+</html>

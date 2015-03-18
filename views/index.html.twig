@@ -5,10 +5,13 @@
     <body>
         <h1>INDEX.HTML.TWIG</h1>
         {% for restaurant in restaurants %}
-        <p>
-            {{ restaurant.getName() }}
-        </p>
+        <p> {{ restaurant.getName() }}</p>
         {% endfor %}
+
+        {% for cuisine in cuisines %}
+        <p> {{ cuisine.getType() }} </p>
+        {% endfor %}
+
 
         <form action = "/restaurant" method = "post">
             <label for = "name">Enter a new restaurant</label>
@@ -16,6 +19,11 @@
             <button type = "submit">Go!</button>
         </form>
 
+        <form action = "/cuisine" method = "post">
+            <label for = "cuisine_type">Enter a new cuisine</label>
+            <input id = "cuisine_type" name = "cuisine_type" type = "text">
+            <button type = "submit">Cuisine</button>
+        </form>
         <form action = "/" method = "post">
             <button type = "submit">Delete</button>
         </form>
