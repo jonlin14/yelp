@@ -12,7 +12,7 @@
         {
             protected function tearDown()
             {
-                //Restaurant:deleteAll();
+                Restaurant::deleteAll();
                 //Cuisine:deleteAll();
             }
 
@@ -28,6 +28,19 @@
 
                 //Assert
                 $this->assertEquals("Burger King", $result);
+            }
+
+            function test_deleteAll()
+            {
+                //Arrange
+                $name= "Burger King";
+                $new_name_test = new Restaurant($name);
+
+                //Act
+                $result= $new_name_test->deleteAll();
+
+                //Assert
+                $this->assertEquals(null, $result);
             }
         }
 ?>
