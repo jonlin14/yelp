@@ -29,29 +29,18 @@
             if ($_POST['cuisine_type']) {
             $new_cuisine = new Cuisine($_POST['cuisine_type']);
             $new_cuisine->save();
-        }
+            }
             $cuisines = Cuisine::getAll();
             return $app['twig']->render('index.html.twig', array('restaurants' => $restaurants, 'cuisines' => $cuisines));
 
         });
 
 
-        $app->post("/delete_restaurant", function() use ($app) {
-            $restaurants = Restaurant::deleteAll();
-            return $app['twig']->render('restaurant.html.twig', array('restaurants' => $restaurants));
+        $app->post("/delete", function() use ($app) {
+            Restaurant::deleteAll();
+            Cuisine::deleteAll();
+            return $app['twig']->render('index.html.twig', array('restaurants' => Restaurant::deleteAll(), 'cuisines' => Cuisine::deleteAll()));
         });
-
-        $app->post("/cuisine", function() use ($app){
-            $cuisines = Cuisine::getAll();
-            return $app['twig']->render('cuisine.html.twig', array('cuisines' => $cuisines ));
-
-        });
-
-
-
-
-
-
 
         return $app;
 
