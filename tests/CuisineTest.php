@@ -62,6 +62,23 @@
             $this->assertEquals($cuisine1, $result);
 
         }
+
+        function testUpdate()
+        {
+            //Arrange
+            $type= "mexican";
+            $id = 1;
+            $test_type = new Cuisine ($type, $id);
+            $test_type->save();
+
+            $new_type= "thai";
+
+            //Act
+            $test_type->update($new_type);
+
+            //Assert
+            $this->assertEquals("thai", $test_type->getType());
+        }
     }
 
 

@@ -4,10 +4,12 @@
     </head>
     <body>
             <p>CUISINE.HTML.TWIG</p>
-            {% for cuisine in cuisines %}
             <p> {{ cuisine.getType() }} </p>
-            {% endfor %}
+            <p><a href="/cuisines/{{ cuisine.getId }}/edit">Edit this category</a><p>
+
 
             <a href="/">Go home!</a>
+
+            </form>
     </body>
 </html>
