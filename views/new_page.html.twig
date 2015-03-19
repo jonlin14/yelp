@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Display cuisines by id</title>
+    </head>
+    <body>
+        <p>Add a new restaurant to your cuisine category</p>
+
+
+            <form action='/new_page' method='post'>
+              <input id="cuisine_id" name="cuisine_id" type="hidden" value="{{ cuisine.getId() }}">
+
+              <input id='name1' name='name1' type='text' placeholder="restaurant name">
+
+              <button type='submit'>Add Restaurant</button>
+              <a href="/">Go home!</a>
+          </form>
+        </form>
+    </body>
+</html>

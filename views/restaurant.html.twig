@@ -5,16 +5,14 @@
     <body>
             RESTAURANT.HTML.TWIG
 
-            {% for restaurant in restaurants %}
-            <p>
-                {{ restaurant.getName() }}
-            </p>
-            {% endfor %}
+            <p>{{ restaurant.getName() }}</p>
+            <p><a href="/restaurants/{{ restaurant.getId }}/edit">Edit this category</a><p>
+                <form action='/tasks' method='post'>
+                              <input id="category_id" name="category_id" type="hidden" value="{{ category.getId() }}">
 
-            <a href="/">Home Page</a>
+                              <input id='description' name='description' type='text' placeholder="task description">
 
-            <form action = '/delete_restaurant' method='post'>
-                <button type="submit">Delete!</button>
-            </form>
+                              <button type='submit'>Add task</button>
+                          </form>
     </body>
 </html>
