@@ -82,7 +82,19 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM cuisine WHERE id = {$this->getId()};");
         }
-
+        function getRestaurants()
+        {
+            $restaurants = array();
+            $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE cuisine_id = {$this->getId()};");
+            foreach ($returned_restaurants as $restaurant) {
+                $name = $restaurant['name'];
+                $id = $restaurant['id'];
+                $cuisine_id = $restaurant['cuisine_id'];
+                $new_restaurant = new Restaurant($name, $id, $cuisine_id);
+                array_push($restaurants, $new_restaurant);
+            }
+            return $restaurants;
+        }
     }
 
 ?>

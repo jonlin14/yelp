@@ -39,7 +39,6 @@
         $app->post("/restaurant", function() use ($app){
             $new_restaurant = new Restaurant($_POST['name']);
             $new_restaurant->save();
-
             $restaurants = Restaurant::getAll();
 
              return $app['twig']->render('restaurant.html.twig', array('restaurants' => $restaurants, 'restaurant' => $new_restaurant));
@@ -49,6 +48,23 @@
         $app->get("/restaurants/{id}/edit", function($id) use ($app){
             $found_restaurant = Restaurant::search($id);
             return $app['twig']->render('restaurant_edit.html.twig', array ('restaurant' => $found_restaurant));
+        });
+
+        $app->get("/new_page/{id}", function($id) use ($app){
+                $cuisine = Cuisine::search($id);
+                return $app['twig']->render('new_page.html.twig', array ('cuisine' => $cuisine, 'restaurants'=>$cuisine->getRestaurants()));
+        });
+
+        $app->post("/new_page", function() use ($app){
+                $new_name = $_POST['name1'];
+                $cuisine_id = $_POST['cuisine_id'];
+
+                $new_category_restaurant = new Restaurant($new_name, $id = null, $cuisine_id);
+                $new_category_restaurant->save();
+                $cuisine = Cuisine::search($cuisine_id);
+
+            return $app['twig']->render('new_page.html.twig', array('cuisine' => $cuisine,
+            'restaurants' => Cuisine::getAll()));
         });
 
         $app->patch("/restaurants/{id}", function($id) use ($app) {

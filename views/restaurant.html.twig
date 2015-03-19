@@ -7,6 +7,12 @@
 
             <p>{{ restaurant.getName() }}</p>
             <p><a href="/restaurants/{{ restaurant.getId }}/edit">Edit this category</a><p>
-            <a href="/">Go home!</a>
+                <form action='/tasks' method='post'>
+                              <input id="category_id" name="category_id" type="hidden" value="{{ category.getId() }}">
+
+                              <input id='description' name='description' type='text' placeholder="task description">
+
+                              <button type='submit'>Add task</button>
+                          </form>
     </body>
 </html>
