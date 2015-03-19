@@ -79,6 +79,30 @@
             //Assert
             $this->assertEquals("thai", $test_type->getType());
         }
+
+
+        function testDelete()
+        {
+            $type1 = "mexican";
+            $id1 = 1;
+            $cuisine1 = new Cuisine($type1, $id1);
+            $cuisine1->save();
+
+            $type2 = "irish";
+            $id2 = 2;
+            $cuisine2 = new Cuisine($type2, $id2);
+            $cuisine2->save();
+
+            $cuisine1->delete();
+
+            $this->assertEquals([$cuisine2], Cuisine::getAll());
+
+
+
+
+
+        }
+
     }
 
 

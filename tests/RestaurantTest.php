@@ -73,9 +73,9 @@
                 $new_name_test1 = new Restaurant($name1, $id);
                 $new_name_test1->save();
 
-                $result = Restaurant::find($new_name_test1->getId());
+                $result = Restaurant::search($new_name_test1->getId());
 
-                $this->assertEquals($name1, $result);
+                $this->assertEquals($name1, $result->getName());
 
             }
         }
