@@ -5,16 +5,8 @@
     <body>
             RESTAURANT.HTML.TWIG
 
-            {% for restaurant in restaurants %}
-            <p>
-                {{ restaurant.getName() }}
-            </p>
-            {% endfor %}
-
-            <a href="/">Home Page</a>
-
-            <form action = '/delete_restaurant' method='post'>
-                <button type="submit">Delete!</button>
-            </form>
+            <p>{{ restaurant.getName() }}</p>
+            <p><a href="/restaurants/{{ restaurant.getId }}/edit">Edit this category</a><p>
+            <a href="/">Go home!</a>
     </body>
 </html>

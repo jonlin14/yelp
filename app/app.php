@@ -36,23 +36,27 @@
             return $app ['twig']->render('cuisine.html.twig', array ('cuisine' => $cuisine));
         });
 
-        $app->post("/", function() use ($app){
+        $app->post("/restaurant", function() use ($app){
             $new_restaurant = new Restaurant($_POST['name']);
             $new_restaurant->save();
 
             $restaurants = Restaurant::getAll();
 
-
-
-            // if ($_POST['cuisine_type']) {
-            // $new_cuisine = new Cuisine($_POST['cuisine_type']);
-            // $new_cuisine->save();
-            // }
-            // $cuisines = Cuisine::getAll();
-             return $app['twig']->render('index.html.twig', array('restaurants' => $restaurants, 'cuisines' => Cuisine::getAll()));
+             return $app['twig']->render('restaurant.html.twig', array('restaurants' => $restaurants, 'restaurant' => $new_restaurant));
 
         });
 
+        $app->get("/restaurants/{id}/edit", function($id) use ($app){
+            $found_restaurant = Restaurant::search($id);
+            return $app['twig']->render('restaurant_edit.html.twig', array ('restaurant' => $found_restaurant));
+        });
+
+        $app->patch("/restaurants/{id}", function($id) use ($app) {
+            $restaurant_type = $_POST['restaurant_name'];
+            $restaurant = Restaurant::search($id);
+            $restaurant->update($restaurant_type);
+            return $app['twig']->render('restaurant.html.twig', array ('restaurant' => $restaurant));
+        });
 
         $app->post("/delete", function() use ($app) {
             Restaurant::deleteAll();

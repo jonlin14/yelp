@@ -40,6 +40,12 @@
             $this->setId($result['id']);
         }
 
+        function update($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE restaurants SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+        }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM restaurants *;");
@@ -59,7 +65,7 @@
                 return $new_array;
         }
 
-        static function find($search_id)
+        static function search($search_id)
         {
             $found_restaurant = null;
             $returned_array = Restaurant::getAll();
@@ -68,7 +74,7 @@
                 $id = $element->getId();
                 if ($id == $search_id)
                 {
-                    $found_restaurant = $element->getName();
+                    $found_restaurant = $element;
                 }
             }
             return $found_restaurant;
