@@ -58,6 +58,12 @@
             return $app['twig']->render('restaurant.html.twig', array ('restaurant' => $restaurant));
         });
 
+        $app->delete("cuisines/{id}", function ($id) use ($app) {
+            $cuisine = Cuisine::search($id);
+            $cuisine->delete();
+            return $app['twig']->render('index.html.twig', array ('cuisines'=> Cuisine::getAll(), 'restaurants' => Restaurant::getAll()));
+        });
+
         $app->post("/delete", function() use ($app) {
             Restaurant::deleteAll();
             Cuisine::deleteAll();
